@@ -5,7 +5,7 @@
 # per-card links stay as they are.
 import os
 
-from board import FILLS, ROT, counters, board_label, graph, graph_h, sticker
+from board import FILLS, ICON_OF, ROT, counters, icon, board_label, sticker
 from cards import (PULSE_CSS, TAGS, app_label, app_fact, challenge_view, fit_size, hero_label, long_date, name_line,
                    sticker_link, terminal_height, whoami_label, whoami_lines, _terminal)
 from svgkit import HERE, Svg, img_b64, mix, text_width, wrap
@@ -47,8 +47,7 @@ def whoami_phone(t, data, P):
 
 def github_board_phone(t, data):
     cs = counters(data)
-    gy = 198 + 3 * 106 + 12
-    s = Svg(440, int(gy + graph_h(13.9) + 30), t, board_label(data))
+    s = Svg(440, 534, t, board_label(data))
     s.board()
     s.text(26, 54, "On GitHub", "f700", 30)
     s.text(414, 52, "redrawn nightly", "m400", 15, "muted", "end")
@@ -56,7 +55,8 @@ def github_board_phone(t, data):
     sticker(s, 26, 78, 388, 100, FILLS[0], ROT[0])
     s.text(44, 130, cs[0][0], "f700", 50)
     nw = text_width(cs[0][0], "f700", 50)
-    for k, line in enumerate(wrap(cs[0][1], "m400", 16, 388 - 44 - nw - 16)[:3]):
+    icon(s, ICON_OF[0], 26 + 388 - 14 - 32, 78 + 12, 32)
+    for k, line in enumerate(wrap(cs[0][1], "m400", 16, 388 - 44 - nw - 16 - 36)[:3]):
         s.text(44 + nw + 14, 118 + k * 20, line, "m400", 16)
     s.add("</g>")
     y = 198
@@ -64,11 +64,11 @@ def github_board_phone(t, data):
         col, row = (k - 1) % 2, (k - 1) // 2
         x, yy = 26 + col * 200, y + row * 106
         sticker(s, x, yy, 188, 92, FILLS[k], ROT[k])
+        icon(s, ICON_OF[k], x + 188 - 12 - 24, yy + 8, 24)
         s.text(x + 14, yy + 42, cs[k][0], "f700", 34)
         for m, line in enumerate(wrap(cs[k][1], "m400", 15, 188 - 28)[:2]):
             s.text(x + 14, yy + 64 + m * 18, line, "m400", 15)
         s.add("</g>")
-    graph(s, 26, gy, 388, data["contrib"]["grid"], 26, 13.9, 11, "per day")
     return s
 
 

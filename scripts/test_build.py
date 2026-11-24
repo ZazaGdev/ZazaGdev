@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from unittest import mock
 
-import board, build, cards, fetch, phone
+import board, build, cards, fetch, graphs, phone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -376,7 +376,7 @@ class BuildTests(unittest.TestCase):
 
     def test_type_is_big_enough(self):
         svgs = build.make_assets(self.res["data"], self.P)
-        floors = {"hero-": 15, "github-": 15, "whoami-": 15, "label-": 15, "badge-": 15, "app-": 13, "video-": 13}
+        floors = {"hero-": 15, "github-": 15, "graph-": 8, "line-": 15, "whoami-": 15, "label-": 15, "badge-": 15, "app-": 13, "video-": 13}
         for name, s in svgs.items():
             for prefix, floor in floors.items():
                 if name.startswith(prefix):
@@ -398,6 +398,99 @@ class BuildTests(unittest.TestCase):
         self.assertTrue(refs)
         for ref in refs:
             self.assertTrue(os.path.exists(os.path.join(self.out, ref)), ref)
+
+    def test_programmer_simulator_is_never_on_the_app_store(self):
+        files = dict(self.res["files"])
+        files["profile.json"] = read(os.path.join(ROOT, "profile.json"))
+        files["state.json"] = json.dumps(self.res["data"]["appstore"])
+        for name, text in files.items():
+            if not name.endswith((".svg", ".md", ".json")):
+                continue
+            self.assertNotIn("Out since", text, name)
+            self.assertNotIn("apps.apple.com/us/app/programmer-simulator", text, name)
+            self.assertNotIn("ps_release", text, name)
+            for m in re.finditer("Programmer Simulator", text):
+                self.assertNotIn("App Store", text[max(0, m.start() - 60):m.end() + 60], name)
+        ps = [a for a in self.P["apps"] if a["id"] == "programmer-simulator"][0]
+        self.assertEqual((ps["status"], ps["url"]), ("in the works", "https://zazag.dev/apps/programmer-simulator/"))
+        self.assertNotIn("programmer_simulator", self.P["itunes"])
+        self.assertIn("https://zazag.dev/apps/programmer-simulator/", self.res["files"]["README.md"])
+
+    def test_graph_totals_are_the_sum_of_their_cells(self):
+        today = date.fromisoformat(self.res["data"]["today"])
+        days = self.res["data"]["contrib"]["days"]
+        files = self.res["files"]
+        for key, summary, start, end, words in graphs.graph_specs(self.res["data"], today):
+            cells = graphs.cells_of(days, start, end)
+            total = sum(c for _, c in cells)
+            for name in (f"graph-{key}", f"graph-{key}-phone"):
+                svg = files[f"assets/{name}-light.svg"]
+                self.assertIn(f"{total:,}", re.findall(r"<text [^>]*>([^<]*)</text>", svg)[0], name)
+                self.assertIn(f'aria-label="{graphs.title_of(total, words)}"', svg, name)
+                dim = (graphs.DESKTOP_WIDE if key == "3m" else graphs.DESKTOP_YEAR) if name == f"graph-{key}" else \
+                      (graphs.PHONE_WIDE if key == "3m" else graphs.PHONE_YEAR)
+                lit = len(re.findall(r'<rect x="[\d.]+" y="[\d.]+" width="%s" height="%s"' % (dim.cw, dim.ch), svg))
+                self.assertEqual(lit, len(cells), name)                 # one rect per day, no more, no less
+                printed = [(int(a)) for a in re.findall(r'data-count="(\d+)"', svg)]
+                self.assertEqual(printed, [c for _, c in cells], name)    # every day prints its count, 0 included
+                shown = re.findall(r'<text [^>]*data-count="(\d+)"[^>]*>([^<]*)</text>', svg)
+                for count, txt in shown:                                  # every printed number is that day's count
+                    self.assertEqual(txt, count if not txt.endswith("k") else f"{int(count) / 1000:.1f}k", name)
+        # the totals also match the calendars GitHub gave us
+        for y in range(2020, today.year):
+            cal = fetch.parse_calendar(read(os.path.join(fetch.FIXTURES, f"contrib-{y}.html")))
+            self.assertIn(graphs.title_of(cal["heading"], f"in {y}"), files["README.md"])
+        last = fetch.parse_calendar(read(os.path.join(fetch.FIXTURES, "contrib-last-year.html")))
+        self.assertIn(graphs.title_of(last["heading"], "in the last 12 months"), files["README.md"])
+
+    def test_an_empty_year_is_an_empty_grid_with_zero(self):
+        s, total, title = graphs.graph_image("light", graphs.DESKTOP_YEAR, {}, date(2019, 1, 1), date(2019, 12, 31), "in 2019")
+        self.assertEqual((total, title), (0, "0 contributions in 2019"))
+        self.assertEqual(len(re.findall(r'data-count="0"[^>]*>0</text>', s.render())), 365)
+        self.assertEqual(len(re.findall(r'<rect x="[\d.]+" y="[\d.]+" width="26"', s.render())), 365)
+
+    def test_the_30_day_line_chart_plots_the_daily_counts(self):
+        today = date.fromisoformat(self.res["data"]["today"])
+        days = self.res["data"]["contrib"]["days"]
+        want = [days.get((today - timedelta(days=29 - i)).isoformat(), 0) for i in range(30)]
+        for name, phone in (("line-30d", False), ("line-30d-phone", True)):
+            svg = self.res["files"][f"assets/{name}-light.svg"]
+            dots = re.findall(r'<circle cx="([\d.]+)" cy="([\d.]+)"[^>]*data-count="(\d+)"', svg)
+            self.assertEqual([int(c) for _, _, c in dots], want, name)
+            ys = [float(y) for _, y, _ in dots]
+            top, base = min(ys), max(ys)                                      # the best day and a zero day
+            ticks = [int(v) for v in re.findall(r'text-anchor="end"[^>]*>(\d+)</text>', svg)]
+            self.assertEqual(max(ticks), max(want), name)                    # the top label is a value the chart reaches
+            self.assertEqual(min(ticks), 0, name)
+            if min(want) == 0:
+                for (_, y, c) in dots:                                       # one linear scale for every dot
+                    self.assertAlmostEqual((base - float(y)) / (base - top), int(c) / max(want), places=1)
+            self.assertIn(f"{sum(want):,} contributions in the last 30 days", svg)
+            self.assertIn(f"{sum(want):,} contributions in the last 30 days", self.res["files"]["README.md"])
+        text = self.res["files"]["README.md"]
+        self.assertGreater(text.index("line-30d-light.svg"), text.rindex("</details>"))     # right below the graph section
+
+    def test_readme_has_one_details_per_year_and_the_default_graph_outside(self):
+        text = self.res["files"]["README.md"]
+        today = date.fromisoformat(self.res["data"]["today"])
+        summaries = re.findall(r"<details><summary>([^<]*)</summary>", text)
+        self.assertEqual(summaries, ["Last 12 months"] + [str(y) for y in range(today.year, 2019, -1)])
+        self.assertEqual(text.count("<details>"), text.count("</details>"))
+        self.assertLess(text.index("graph-3m-light.svg"), text.index("<details>"))
+        self.assertEqual(len(re.findall(r"graph-3m-light\.svg", text)), 1)
+        outside = re.sub(r"<details>.*?</details>", "", text, flags=re.S)
+        self.assertIn("graph-3m-light.svg", outside)
+        self.assertNotIn("graph-12m", outside)
+        self.assertLess(len(text.encode("utf8")), 500 * 1024)
+
+    def test_github_board_has_seven_icons_and_no_graph(self):
+        for name in ("github", "github-phone"):
+            svg = self.res["files"][f"assets/{name}-light.svg"]
+            body = svg.split("</defs>")[1]
+            self.assertEqual(body.count("scale("), 7, name)
+            self.assertNotIn("Less", svg, name)
+            self.assertNotIn("http", body.replace("http://www.w3.org/2000/svg", ""), name)   # nothing third party
+        self.assertEqual(sorted(board.ICON_OF), sorted(["calendar", "flame", "trophy", "chart", "folder", "star", "download"]))
 
     def test_alt_text_carries_the_numbers(self):
         text = self.res["files"]["README.md"]

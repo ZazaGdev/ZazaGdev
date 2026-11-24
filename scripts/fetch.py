@@ -181,6 +181,7 @@ def fetch_contrib(net, user, created, today, cached_years):
         "current_streak": cur,
         "longest_streak": best,
         "grid": grid,
+        "days": all_days,        # date -> count, nonzero days only: the cells of every graph
     }
     return contrib, {k: v for k, v in years.items() if int(k) < today.year}
 
@@ -327,11 +328,9 @@ def fetch_videos(net, channel_id, count=3):
     return {"videos": vids}
 
 
-def fetch_appstore(net, ps_id, martva_id, country):
-    ps = json.loads(net.get(f"https://itunes.apple.com/lookup?id={ps_id}", "itunes-ps.json"))["results"][0]
+def fetch_appstore(net, martva_id, country):
     mv = json.loads(net.get(f"https://itunes.apple.com/lookup?id={martva_id}&country={country}", "itunes-martva.json"))["results"][0]
-    return {"ps_release": ps["releaseDate"][:10],
-            "martva_rating": mv.get("averageUserRating") or 0, "martva_count": mv.get("userRatingCount") or 0}
+    return {"martva_rating": mv.get("averageUserRating") or 0, "martva_count": mv.get("userRatingCount") or 0}
 
 
 # ------------------------------------------------------------------ all of it
@@ -356,8 +355,7 @@ def collect(net, profile, today, state=None):
         "repos": lambda: fetch_repos(net, user),
         "challenge": lambda: fetch_challenge(net),
         "videos": lambda: fetch_videos(net, profile["youtube_channel_id"]["value"]),
-        "appstore": lambda: fetch_appstore(net, profile["itunes"]["programmer_simulator"], profile["itunes"]["martva"],
-                                           profile["itunes"]["martva_country"]),
+        "appstore": lambda: fetch_appstore(net, profile["itunes"]["martva"], profile["itunes"]["martva_country"]),
     }
     where = {"repos": "api.github.com users/%s/repos and releases" % user, "challenge": "zazag.dev/data.js",
              "videos": "YouTube channel feed", "appstore": "iTunes lookup"}

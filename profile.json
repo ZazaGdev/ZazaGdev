@@ -17,7 +17,6 @@
     "as_of": "2026-11-24"
   },
   "itunes": {
-    "programmer_simulator": 6826223995,
     "martva": 6795477065,
     "martva_country": "ge",
     "source": "the apps' own App Store links",
@@ -72,11 +71,11 @@
       "name": "Programmer Simulator",
       "icon": "icons/programmer-simulator.webp",
       "line": "An iPhone game about vibe coding your way out of the family garage.",
-      "status": "on the App Store",
+      "status": "in the works",
       "chips": [["Unity", "rd"], ["iPhone", "yt"], ["Free", "li"]],
-      "fact": ["released"],
+      "fact": ["iPhone game", "Unity"],
       "tint": "rd",
-      "url": "https://apps.apple.com/us/app/programmer-simulator/id6826223995"
+      "url": "https://zazag.dev/apps/programmer-simulator/"
     },
     {
       "id": "martva",
@@ -102,7 +101,7 @@
     {"name": "EngineBakeoff", "url": "https://github.com/ZazaGdev/EngineBakeoff"}
   ],
   "now": [
-    "Programmer Simulator is out on the App Store",
+    "Programmer Simulator is in the works",
     "FocusShell {focusshell_tag}: many Claude Code agents, one window"
   ],
   "now_source": "the owner's current work, read 24 Nov 2026"

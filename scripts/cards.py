@@ -276,8 +276,6 @@ def app_fact(a, data, P):
             parts.append(f"{fmt(repo['downloads'])} downloads")
         elif key == "stars" and repo.get("stars"):
             parts.append(f"{fmt(repo['stars'])} stars")
-        elif key == "released":
-            parts.append(f"Out since {long_date(mv['ps_release'])}")
         elif key == "martva_downloads":
             parts.append(f"{P['martva_downloads']['value']} downloads")
         elif key == "rating":

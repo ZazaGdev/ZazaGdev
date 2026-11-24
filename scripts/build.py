@@ -6,7 +6,7 @@
 import argparse, json, os, sys
 from datetime import date, datetime, timezone
 
-import board, cards, fetch, phone, readme
+import board, cards, fetch, graphs, phone, readme
 from svgkit import HERE as SCRIPTS
 
 ROOT = os.path.dirname(SCRIPTS)
@@ -29,6 +29,7 @@ def make_assets(data, P):
         out[f"hero-phone-{t}.svg"] = phone.hero_phone(t, data, P)
         out[f"github-{t}.svg"] = board.github_board(t, data)
         out[f"github-phone-{t}.svg"] = phone.github_board_phone(t, data)
+        out.update(graphs.make_graphs(t, data, date.fromisoformat(data["today"]))[0])
         out[f"whoami-{t}.svg"] = cards.whoami(t, data, P)
         out[f"whoami-phone-{t}.svg"] = phone.whoami_phone(t, data, P)
         out[f"label-ship-{t}.svg"] = cards.label(t, "What I ship", f"{len(P['apps'])} flagship apps", "rd", "card")
@@ -66,7 +67,6 @@ def numbers(data, P):
         ("release downloads", fmt_(r["downloads"]), "api.github.com repos/*/releases"),
         ("challenge", ch, "zazag.dev/data.js"),
         ("latest long videos", ", ".join(v["id"] for v in data["videos"]["videos"]), "YouTube channel feed"),
-        ("Programmer Simulator released", a["ps_release"], "iTunes lookup %s" % P["itunes"]["programmer_simulator"]),
         ("Martva App Store rating", f"{a['martva_rating']} from {a['martva_count']}", "iTunes lookup %s (country %s)" % (P["itunes"]["martva"], P["itunes"]["martva_country"])),
         ("Martva downloads", P["martva_downloads"]["value"], f"profile.json, {P['martva_downloads']['source']}, {P['martva_downloads']['as_of']}"),
     ]

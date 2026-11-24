@@ -7,16 +7,68 @@
 <a href="https://zazag.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-site-dark.svg"><img src="assets/badge-site-light.svg" height="44" alt="zazag.dev"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/github-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/github-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/github-dark.svg"><img src="assets/github-light.svg" width="100%" alt="On GitHub: 11,524 contributions in the last year, a 58-day current streak, since 28 Sep, longest streak 58 days, 12,687 contributions since 2020, 21 public repos, 15 stars earned, 156 downloads of my releases."></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/github-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/github-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/github-dark.svg"><img src="assets/github-light.svg" width="100%" alt="On GitHub: 11,526 contributions in the last year, a 58-day current streak, since 28 Sep, longest streak 58 days, 12,689 contributions since 2020, 21 public repos, 15 stars earned, 156 downloads of my releases."></picture>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/whoami-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/whoami-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/whoami-dark.svg"><img src="assets/whoami-light.svg" width="100%" alt="whoami: zaza, solo developer, Tbilisi, Georgia. I build apps, iPhone games and AI agent tools, and film it for YouTube. Now: Road to 10,000 followers on X, 3,216 after day 4 of 42. Programmer Simulator is out on the App Store. FocusShell v2.1.0: many Claude Code agents, one window."></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-3m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-3m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-3m-dark.svg"><img src="assets/graph-3m-light.svg" width="100%" alt="8,001 contributions in the last 3 months"></picture>
+
+<details><summary>Last 12 months</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-12m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-12m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-12m-dark.svg"><img src="assets/graph-12m-light.svg" width="100%" alt="11,526 contributions in the last 12 months"></picture>
+
+</details>
+
+<details><summary>2026</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2026-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2026-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2026-dark.svg"><img src="assets/graph-2026-light.svg" width="100%" alt="11,411 contributions in 2026"></picture>
+
+</details>
+
+<details><summary>2025</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2025-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2025-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2025-dark.svg"><img src="assets/graph-2025-light.svg" width="100%" alt="472 contributions in 2025"></picture>
+
+</details>
+
+<details><summary>2024</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2024-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2024-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2024-dark.svg"><img src="assets/graph-2024-light.svg" width="100%" alt="0 contributions in 2024"></picture>
+
+</details>
+
+<details><summary>2023</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2023-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2023-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2023-dark.svg"><img src="assets/graph-2023-light.svg" width="100%" alt="315 contributions in 2023"></picture>
+
+</details>
+
+<details><summary>2022</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2022-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2022-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2022-dark.svg"><img src="assets/graph-2022-light.svg" width="100%" alt="330 contributions in 2022"></picture>
+
+</details>
+
+<details><summary>2021</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2021-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2021-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2021-dark.svg"><img src="assets/graph-2021-light.svg" width="100%" alt="160 contributions in 2021"></picture>
+
+</details>
+
+<details><summary>2020</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2020-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2020-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2020-dark.svg"><img src="assets/graph-2020-light.svg" width="100%" alt="1 contribution in 2020"></picture>
+
+</details>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/line-30d-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/line-30d-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/line-30d-dark.svg"><img src="assets/line-30d-light.svg" width="100%" alt="2,326 contributions in the last 30 days"></picture>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/whoami-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/whoami-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/whoami-dark.svg"><img src="assets/whoami-light.svg" width="100%" alt="whoami: zaza, solo developer, Tbilisi, Georgia. I build apps, iPhone games and AI agent tools, and film it for YouTube. Now: Road to 10,000 followers on X, 3,216 after day 4 of 42. Programmer Simulator is in the works. FocusShell v2.1.0: many Claude Code agents, one window."></picture>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/label-ship-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/label-ship-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/label-ship-dark.svg"><img src="assets/label-ship-light.svg" width="100%" alt="What I ship"></picture>
 
 <p align="center">
 <a href="https://github.com/ZazaGdev/FocusShell"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-focusshell-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-focusshell-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-focusshell-dark.svg"><img src="assets/app-focusshell-light.svg" width="49%" alt="FocusShell: One window for all your Claude Code projects. Open source, v2.1.0, 110 downloads, 7 stars."></picture></a>
 <a href="https://github.com/ZazaGdev/editbay"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-editbay-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-editbay-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-editbay-dark.svg"><img src="assets/app-editbay-light.svg" width="49%" alt="Editbay: A free, local video editor. Every ZazaG Dev video is cut in it. Open source, v2.1, 30 downloads, Win + Mac."></picture></a>
-<a href="https://apps.apple.com/us/app/programmer-simulator/id6826223995"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-programmer-simulator-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-programmer-simulator-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-programmer-simulator-dark.svg"><img src="assets/app-programmer-simulator-light.svg" width="49%" alt="Programmer Simulator: An iPhone game about vibe coding your way out of the family garage. On the app store, Out since 7 Nov 2026."></picture></a>
+<a href="https://zazag.dev/apps/programmer-simulator/"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-programmer-simulator-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-programmer-simulator-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-programmer-simulator-dark.svg"><img src="assets/app-programmer-simulator-light.svg" width="49%" alt="Programmer Simulator: An iPhone game about vibe coding your way out of the family garage. In the works, iPhone game, Unity."></picture></a>
 <a href="https://zazag.dev/apps/martva/"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-martva-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-martva-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-martva-dark.svg"><img src="assets/app-martva-light.svg" width="49%" alt="Martva: Georgian driving theory test: 1,572 questions, 5 languages, offline. Google play + app store, 650+ downloads, 5.0 from 5 ratings."></picture></a>
 </p>
 

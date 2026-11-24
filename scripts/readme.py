@@ -2,12 +2,19 @@
 # Every image is a <picture> with a dark <source>. Pictures in PHONE also get phone sources.
 # Source order matters: the browser takes the first one whose media matches, so dark+phone comes
 # first, then phone, then dark, then the light desktop <img>.
+from datetime import date
 from html import escape
 
 from board import board_label
 from cards import app_fact, app_label, fmt, hero_label, whoami_label
+from graphs import graph_titles, last_days, title_of, total_of
+
 
 PHONE = ("hero", "github", "whoami")      # every picture that has a phone variant is called with phone=True
+
+
+def line_title(data, today):
+    return title_of(total_of(last_days(data, today)), "in the last 30 days")
 
 
 def picture(name, width, alt, phone=False):
@@ -34,6 +41,10 @@ def render(data, P):
         badges.append(link(L[key]["url"], picture(f"badge-{name}", "h44", alt)))
     out += ['<p align="center">', *badges, "</p>", ""]
     out += [picture("github", "100%", board_label(data), "github" in PHONE), ""]
+    for key, summary, title in graph_titles(data, date.fromisoformat(data["today"])):
+        pic = picture(f"graph-{key}", "100%", title, True)
+        out += [pic, ""] if summary is None else [f"<details><summary>{summary}</summary>", "", pic, "", "</details>", ""]
+    out += [picture("line-30d", "100%", line_title(data, date.fromisoformat(data["today"])), True), ""]
     out += [picture("whoami", "100%", whoami_label(data, P), "whoami" in PHONE), ""]
     out += [picture("label-ship", "100%", "What I ship", True), ""]
     apps = []
