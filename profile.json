@@ -1,0 +1,109 @@
+{
+  "_about": "Hand-kept facts for the profile. Each one has its source and the date it was read beside it. Numbers that change by themselves (contributions, streaks, repos, stars, downloads, X followers, videos, App Store data) are fetched by scripts/fetch.py and never typed here.",
+  "user": "ZazaGdev",
+  "created": {
+    "value": "2020-12-04",
+    "source": "GitHub API users/ZazaGdev, created_at (the account never changes it)",
+    "as_of": "2026-11-24"
+  },
+  "tagline": {
+    "value": "One solo developer building and shipping my own apps, in public.",
+    "source": "zazag.dev data.js, SITE.tagline",
+    "as_of": "2026-11-24"
+  },
+  "youtube_channel_id": {
+    "value": "UCYQo00czDdFJ3EnYxt2_SzA",
+    "source": "youtube.com/@zazagdev channel page",
+    "as_of": "2026-11-24"
+  },
+  "itunes": {
+    "programmer_simulator": 6826223995,
+    "martva": 6795477065,
+    "martva_country": "ge",
+    "source": "the apps' own App Store links",
+    "as_of": "2026-11-24"
+  },
+  "links": {
+    "source": "the owner's own profiles",
+    "as_of": "2026-11-24",
+    "youtube": {"label": "YouTube", "handle": "@zazagdev", "url": "https://www.youtube.com/@zazagdev"},
+    "x": {"label": "X", "handle": "@ZazaGDev", "url": "https://x.com/ZazaGDev"},
+    "linkedin": {"label": "LinkedIn", "handle": "", "url": "https://www.linkedin.com/in/zaza-gejadze-48b248226/"},
+    "site": {"label": "zazag.dev", "handle": "", "url": "https://zazag.dev"}
+  },
+  "martva_downloads": {
+    "value": "650+",
+    "source": "zazag.dev Martva page (Google Play and App Store together)",
+    "as_of": "2026-11-19"
+  },
+  "location": {
+    "value": "Tbilisi, Georgia",
+    "source": "github.com/ZazaGdev profile",
+    "as_of": "2026-11-24"
+  },
+  "apps_source": "zazag.dev app pages and the apps' repos, read 24 Nov 2026. Order: FocusShell, Editbay, Programmer Simulator, Martva.",
+  "apps": [
+    {
+      "id": "focusshell",
+      "name": "FocusShell",
+      "icon": "icons/focusshell.png",
+      "line": "One window for all your Claude Code projects.",
+      "status": "open source",
+      "chips": [["Electron", "lx"], ["Windows", "bd"], ["Claude Code", "x"]],
+      "fact": ["tag", "downloads", "stars"],
+      "tint": "lx",
+      "url": "https://github.com/ZazaGdev/FocusShell",
+      "repo": "FocusShell"
+    },
+    {
+      "id": "editbay",
+      "name": "Editbay",
+      "icon": "icons/editbay.png",
+      "line": "A free, local video editor. Every ZazaG Dev video is cut in it.",
+      "status": "open source",
+      "chips": [["TypeScript", "lx"], ["Electron", "bd"], ["MIT", "li"]],
+      "fact": ["tag", "downloads", "Win + Mac"],
+      "tint": "bd",
+      "url": "https://github.com/ZazaGdev/editbay",
+      "repo": "editbay"
+    },
+    {
+      "id": "programmer-simulator",
+      "name": "Programmer Simulator",
+      "icon": "icons/programmer-simulator.webp",
+      "line": "An iPhone game about vibe coding your way out of the family garage.",
+      "status": "on the App Store",
+      "chips": [["Unity", "rd"], ["iPhone", "yt"], ["Free", "li"]],
+      "fact": ["released"],
+      "tint": "rd",
+      "url": "https://apps.apple.com/us/app/programmer-simulator/id6826223995"
+    },
+    {
+      "id": "martva",
+      "name": "Martva",
+      "icon": "icons/martva.webp",
+      "line": "Georgian driving theory test: 1,572 questions, 5 languages, offline.",
+      "status": "Google Play + App Store",
+      "status_phone": "Play + App Store",
+      "chips": [["Android", "li"], ["iPhone", "yt"], ["5 languages", "x"]],
+      "fact": ["martva_downloads", "rating"],
+      "tint": "li",
+      "url": "https://zazag.dev/apps/martva/"
+    }
+  ],
+  "store_links": {
+    "martva_google_play": "https://play.google.com/store/apps/details?id=com.martva.app",
+    "martva_app_store": "https://apps.apple.com/us/app/martva-driving-license/id6795477065"
+  },
+  "more": [
+    {"name": "Showntask", "url": "https://github.com/ZazaGdev/Showntask"},
+    {"name": "Doodlebay", "url": "https://github.com/ZazaGdev/Doodlebay"},
+    {"name": "AI-fun", "url": "https://github.com/ZazaGdev/AI-fun"},
+    {"name": "EngineBakeoff", "url": "https://github.com/ZazaGdev/EngineBakeoff"}
+  ],
+  "now": [
+    "Programmer Simulator is out on the App Store",
+    "FocusShell {focusshell_tag}: many Claude Code agents, one window"
+  ],
+  "now_source": "the owner's current work, read 24 Nov 2026"
+}
