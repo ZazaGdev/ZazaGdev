@@ -1,4 +1,4 @@
-<a href="https://zazag.dev"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/hero-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/hero-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Hi, I&#x27;m Zaza. One solo developer building and shipping my own apps, in public. Road to 10,000 on X: 3,216 of 10,000."></picture></a>
+<a href="https://zazag.dev"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/hero-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/hero-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Hi, I&#x27;m Zaza. One solo developer building and shipping my own apps, in public."></picture></a>
 
 <p align="center">
 <a href="https://www.youtube.com/@zazagdev"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-yt-dark.svg"><img src="assets/badge-yt-light.svg" height="44" alt="YouTube @zazagdev"></picture></a>

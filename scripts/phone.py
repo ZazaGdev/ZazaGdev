@@ -12,7 +12,6 @@ from svgkit import HERE, Svg, img_b64, mix, text_width, wrap
 
 
 def hero_phone(t, data, P):
-    v = challenge_view(data["challenge"])
     tag_lines = wrap(P["tagline"]["value"], "f500", 20, 388)
     chip_y0 = 134 + 27 * len(tag_lines)
     places, cx, cy = [], 26, chip_y0
@@ -22,8 +21,7 @@ def hero_phone(t, data, P):
             cx, cy = 26, cy + 42
         places.append((cx, cy, lab, fill))
         cx += w + 12
-    y = cy + 58
-    s = Svg(440, int(y + 92 + 28) if v else int(cy + 32 + 28), t, hero_label(P, data))
+    s = Svg(440, int(cy + 32 + 28), t, hero_label(P, data))
     s.board()
     s.zlogo(26, 26, 76)
     name_line(s, 116, 84, 42)
@@ -34,20 +32,6 @@ def hero_phone(t, data, P):
         ly += 27
     for px, py, lab, fill in places:
         s.chip(px, py, lab, fill, "f600", 15, 32, 13, 2, 9, 3)
-    if not v:
-        return s
-    s.rect(30, y + 4, 384, 92, "line", 22)
-    s.rect(26, y, 384, 92, "card", 22, "line", 2)
-    cls = ' class="pulse"' if v["live"] else ""
-    s.add(f'<circle cx="46" cy="{y + 24}" r="5.5" fill="{s.col("go" if v["live"] else "muted")}"{cls}/>')
-    room = 398 - 60 - text_width(v["count"], "m500", 15) - 12
-    s.text(60, y + 30, v["title"], "f700", fit_size(v["title"], "f700", 19, room, 15))
-    s.text(398, y + 30, v["count"], "m500", 15, "text", "end")
-    s.rect(42, y + 44, 352, 14, "card", 99, "text", 1.5)
-    s.rect(43.5, y + 45.5, max(10, 349 * min(v["pct"], 1)), 11, "go", 99)
-    s.text(42, y + 80, v["note"], "m400", 15, "muted")
-    if v["live"]:
-        s.css.append(PULSE_CSS)
     return s
 
 

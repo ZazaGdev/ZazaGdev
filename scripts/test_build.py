@@ -166,7 +166,10 @@ class ChallengeTests(unittest.TestCase):
         data = {"challenge": c, "repos": {"repos": {"FocusShell": {"tag": "v2.0.0"}}}}
         v = cards.challenge_view(c)
         self.assertEqual((v["title"], v["count"], v["note"]), ("Road to 10,000 on X", "3,216 / 10,000", "day 4 of 42, until 31 Dec"))
-        self.assertTrue(cards.hero_label(P, data).endswith("Road to 10,000 on X: 3,216 of 10,000."))
+        # The hero carries no challenge bar (owner, 2026-11-24), so its alt text names no challenge either.
+        self.assertNotIn("Road to", cards.hero_label(P, data))
+        self.assertNotIn("Road to", cards.hero("dark", data, P).render())
+        self.assertNotIn("Road to", phone.hero_phone("dark", data, P).render())
         self.assertIn("Now: Road to 10,000 followers on X, 3,216 after day 4 of 42. ", cards.whoami_label(data, P))
         lines, _ = cards.whoami_lines(data, P)
         self.assertIn("Road to 10,000 followers on X: 3,216 after day 4 of 42", "".join(t for t, _, _ in lines[-3]))
@@ -202,7 +205,7 @@ class ChallengeTests(unittest.TestCase):
                                                           start="2026-10-12", days=30, target=False, counts=[1, 2, 3])))
         v = cards.challenge_view(data["challenge"])
         self.assertEqual((v["count"], v["note"], v["live"]), ("day 3 of 30", "until 10 Nov", True))
-        self.assertIn("day 3 of 30", cards.hero_label(P, data))
+        self.assertIn("day 3 of 30", cards.whoami_label(data, P))
 
     def test_completed_only_is_shown_as_finished_at_the_last_logged_count(self):
         data, P = with_challenge(data_js(challenge_block("x", "completed", counts=[2700, 3100, 3216])))

@@ -114,14 +114,13 @@ def name_line(s, x, base, size):
 
 
 def hero_label(P, data):
-    v = challenge_view(data["challenge"])
-    return f"Hi, I'm Zaza. {P['tagline']['value']}" + (f" {v['alt']}" if v else "")
+    return f"Hi, I'm Zaza. {P['tagline']['value']}"
 
 
 # ---------------------------------------------------------------- hero
+# The hero carries no challenge progress bar (owner, 2026-11-24); the challenge shows in the whoami "now" lines.
 def hero(t, data, P):
-    v = challenge_view(data["challenge"])
-    s = Svg(880, 300 if v else 244, t, hero_label(P, data))
+    s = Svg(880, 244, t, hero_label(P, data))
     s.board()
     s.zlogo(40, 42, 104)
     x0 = 172
@@ -132,8 +131,6 @@ def hero(t, data, P):
     for label, fill in TAGS:
         cx += s.chip(cx, 170, label, fill, "f600", 15, 32, 13, 2, 9, 3) + 14
     sticker_link(s, 724, 34, 126, 44, 20)
-    if v:
-        today_bar(s, 40, 232, v["title"], v["count"], v["pct"], v["note"], v["live"])
     return s
 
 
