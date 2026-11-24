@@ -41,9 +41,13 @@ def render(data, P):
         badges.append(link(L[key]["url"], picture(f"badge-{name}", "h44", alt)))
     out += ['<p align="center">', *badges, "</p>", ""]
     out += [picture("github", "100%", board_label(data), "github" in PHONE), ""]
-    for key, summary, title in graph_titles(data, date.fromisoformat(data["today"])):
+    for key, summary, total, title in graph_titles(data, date.fromisoformat(data["today"])):
         pic = picture(f"graph-{key}", "100%", title, True)
-        out += [pic, ""] if summary is None else [f"<details><summary>{summary}</summary>", "", pic, "", "</details>", ""]
+        if summary is None:
+            out += [pic, ""]
+        else:
+            unit = "contribution" if total == 1 else "contributions"
+            out += [f"<details><summary>{summary}: {fmt(total)} {unit}</summary>", "", pic, "", "</details>", ""]
     out += [picture("line-30d", "100%", line_title(data, date.fromisoformat(data["today"])), True), ""]
     out += [picture("whoami", "100%", whoami_label(data, P), "whoami" in PHONE), ""]
     out += [picture("label-ship", "100%", "What I ship", True), ""]

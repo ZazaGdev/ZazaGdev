@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from unittest import mock
 
-import board, build, cards, fetch, graphs, phone
+import board, build, cards, fetch, graphs, phone, svgkit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -452,29 +452,64 @@ class BuildTests(unittest.TestCase):
     def test_the_30_day_line_chart_plots_the_daily_counts(self):
         today = date.fromisoformat(self.res["data"]["today"])
         days = self.res["data"]["contrib"]["days"]
-        want = [days.get((today - timedelta(days=29 - i)).isoformat(), 0) for i in range(30)]
+        cells = graphs.last_days(self.res["data"], today)
+        self.assertEqual(len(cells), 30)
+        self.assertEqual(cells[-1][0], today - timedelta(days=1))          # ends on yesterday, the last full day
+        want = [days.get((today - timedelta(days=30 - i)).isoformat(), 0) for i in range(30)]
         for name, phone in (("line-30d", False), ("line-30d-phone", True)):
             svg = self.res["files"][f"assets/{name}-light.svg"]
             dots = re.findall(r'<circle cx="([\d.]+)" cy="([\d.]+)"[^>]*data-count="(\d+)"', svg)
             self.assertEqual([int(c) for _, _, c in dots], want, name)
-            ys = [float(y) for _, y, _ in dots]
-            top, base = min(ys), max(ys)                                      # the best day and a zero day
-            ticks = [int(v) for v in re.findall(r'text-anchor="end"[^>]*>(\d+)</text>', svg)]
-            self.assertEqual(max(ticks), max(want), name)                    # the top label is a value the chart reaches
-            self.assertEqual(min(ticks), 0, name)
-            if min(want) == 0:
-                for (_, y, c) in dots:                                       # one linear scale for every dot
-                    self.assertAlmostEqual((base - float(y)) / (base - top), int(c) / max(want), places=1)
+            tick_ys = {int(v): float(y) for y, v in re.findall(r'<text x="[\d.]+" y="([\d.]+)"[^>]*text-anchor="end"[^>]*>(\d+)</text>', svg)}
+            self.assertEqual(max(tick_ys), max(want), name)                # the top label is a value the chart reaches
+            self.assertEqual(min(tick_ys), 0, name)
+            base, top = tick_ys[0] - 5, tick_ys[max(want)] - 5
+            for (_, y, c) in dots:                                         # one linear scale for every dot
+                self.assertAlmostEqual((base - float(y)) / (base - top), int(c) / max(want), places=2)
             self.assertIn(f"{sum(want):,} contributions in the last 30 days", svg)
             self.assertIn(f"{sum(want):,} contributions in the last 30 days", self.res["files"]["README.md"])
         text = self.res["files"]["README.md"]
         self.assertGreater(text.index("line-30d-light.svg"), text.rindex("</details>"))     # right below the graph section
 
+    def test_30_day_line_chart_month_labels_never_overlap_over_a_year(self):
+        data = {"contrib": {"days": {}}}
+        month_re = re.compile(r'<text x="([\d.]+)" y="[\d.]+"[^>]*font-size="(\d+)"[^>]*text-anchor="(start|middle|end)"[^>]*>([A-Z][a-z]{2})</text>')
+        for phone_flag in (False, True):
+            saw_two = False
+            for yr, ndays in ((2026, 365), (2028, 366)):                   # common year and leap year
+                start = date(yr, 1, 1)
+                for offset in range(ndays):
+                    d = start + timedelta(days=offset)
+                    s, _, _ = graphs.line_chart("light", data, d, phone=phone_flag)
+                    self.assertEqual(s.overflow, [], f"{d} phone={phone_flag}")
+                    found = month_re.findall("".join(s.parts))
+                    self.assertGreaterEqual(len(found), 1, f"{d} phone={phone_flag}")
+                    if len(found) >= 2:
+                        saw_two = True
+                    spans = []
+                    for x, size, anchor, txt in found:
+                        w = svgkit.text_width(txt, "m400", int(size))
+                        x = float(x)
+                        left = x - w / 2 if anchor == "middle" else x - w if anchor == "end" else x
+                        spans.append((left, left + w, txt))
+                    spans.sort()
+                    for (_, r1, t1), (l2, _, t2) in zip(spans, spans[1:]):
+                        self.assertGreater(l2, r1, f"{d} phone={phone_flag}: {t1} and {t2} overlap")
+            self.assertTrue(saw_two, f"phone={phone_flag}")
+
     def test_readme_has_one_details_per_year_and_the_default_graph_outside(self):
         text = self.res["files"]["README.md"]
         today = date.fromisoformat(self.res["data"]["today"])
-        summaries = re.findall(r"<details><summary>([^<]*)</summary>", text)
-        self.assertEqual(summaries, ["Last 12 months"] + [str(y) for y in range(today.year, 2019, -1)])
+        details = re.findall(r"<details><summary>([^<]*)</summary>.*?assets/graph-([^-]+)-light\.svg.*?</details>", text, flags=re.S)
+        expected_labels = ["Last 12 months"] + [str(y) for y in range(today.year, 2019, -1)]
+        self.assertEqual([s.split(": ", 1)[0] for s, _ in details], expected_labels)
+        for summary, key in details:
+            svg = self.res["files"][f"assets/graph-{key}-light.svg"]
+            graph_total_str = re.findall(r"<text [^>]*>([^<]*)</text>", svg)[0]
+            graph_total = sum(int(c) for c in re.findall(r'data-count="(\d+)"', svg))
+            self.assertEqual(graph_total_str, f"{graph_total:,}", key)
+            unit = "contribution" if graph_total == 1 else "contributions"
+            self.assertEqual(summary.split(": ", 1)[1], f"{graph_total:,} {unit}", key)
         self.assertEqual(text.count("<details>"), text.count("</details>"))
         self.assertLess(text.index("graph-3m-light.svg"), text.index("<details>"))
         self.assertEqual(len(re.findall(r"graph-3m-light\.svg", text)), 1)

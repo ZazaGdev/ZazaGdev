@@ -4,7 +4,8 @@
 # in design-system colours. Every total is the sum of the cells drawn, never a number read from elsewhere.
 # Desktop is 880 wide. The phone variants are 440 wide: the 3-month graph turns on its side (a week per row,
 # seven big cells across) so every count is big enough to read; the 12-month and year graphs are cut into
-# three stacked rows of about four months. Their cells are too small for numbers, so they print none.
+# four stacked rows of 14 columns (about three months each), with a count in every cell (10.5 to 12 in a
+# 440 box, about 8.5 to 10 px on a 390 px phone).
 from datetime import date, timedelta
 from math import ceil
 
@@ -202,8 +203,9 @@ DAYS = 30
 
 
 def last_days(data, today):
-    """[(date, count)] for the last 30 days, today last."""
-    return cells_of(data["contrib"]["days"], today - timedelta(days=DAYS - 1), today)
+    """[(date, count)] for the 30 full days before today, yesterday last."""
+    end = today - timedelta(days=1)
+    return cells_of(data["contrib"]["days"], end - timedelta(days=DAYS - 1), end)
 
 
 def y_ticks(top):
@@ -234,6 +236,16 @@ def monotone_path(pts):
         out += (f" C{pts[i][0] + w:.1f} {pts[i][1] + m[i] * w:.1f} {pts[i + 1][0] - w:.1f} {pts[i + 1][1] - m[i + 1] * w:.1f} "
                 f"{pts[i + 1][0]:.1f} {pts[i + 1][1]:.1f}")
     return out
+
+
+def line_month_labels(cells, xs, size):
+    """[(x, text, anchor)] for the month names under the 30-day chart, skipping point 0 if it would crowd the 1st."""
+    firsts = [i for i, (d, _) in enumerate(cells) if d.day == 1]
+    lead_w = text_width(cells[0][0].strftime("%b"), "m400", size)
+    show_lead = (not firsts or firsts[0] == 0 or
+                 xs[firsts[0]] - text_width(cells[firsts[0]][0].strftime("%b"), "m400", size) / 2 > xs[0] + lead_w + 6)
+    return [(xs[i], d.strftime("%b"), "middle" if i else "start")
+            for i, (d, _) in enumerate(cells) if d.day == 1 or (i == 0 and show_lead)]
 
 
 def line_chart(t, data, today, phone=False):
@@ -279,8 +291,8 @@ def line_chart(t, data, today, phone=False):
     for i, (d, _) in enumerate(cells):
         if (DAYS - 1 - i) % every == 0:
             s.text(pts[i][0], base + 22, str(d.day), "m400", label, "muted", "middle")
-        if d.day == 1 or i == 0:
-            s.text(pts[i][0], base + 22 + 20, d.strftime("%b"), "m400", label, "text", "middle" if i else "start")
+    for lx, txt, anchor in line_month_labels(cells, [p[0] for p in pts], label):
+        s.text(lx, base + 22 + 20, txt, "m400", label, "text", anchor)
     line = monotone_path(pts)
     s.add(f'<path d="{line} L{pts[-1][0]:.1f} {base:.1f} L{pts[0][0]:.1f} {base:.1f} Z" fill="{mix(s.col("pop"), s.col("card"), 0.16)}"/>')
     s.add(f'<path d="{line}" transform="translate(2 3)" fill="none" stroke="{s.col("line")}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>')
@@ -305,10 +317,13 @@ def graph_specs(data, today):
 
 
 def graph_titles(data, today):
-    """[(key, summary or None, title)] in README order; the title doubles as the picture's alt text."""
+    """[(key, summary or None, total, title)] in README order; the title doubles as the picture's alt text."""
     days = data["contrib"]["days"]
-    return [(key, summary, title_of(total_of(cells_of(days, start, end)), words))
-            for key, summary, start, end, words in graph_specs(data, today)]
+    out = []
+    for key, summary, start, end, words in graph_specs(data, today):
+        total = total_of(cells_of(days, start, end))
+        out.append((key, summary, total, title_of(total, words)))
+    return out
 
 
 def make_graphs(t, data, today):

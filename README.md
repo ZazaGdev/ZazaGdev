@@ -7,59 +7,59 @@
 <a href="https://zazag.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-site-dark.svg"><img src="assets/badge-site-light.svg" height="44" alt="zazag.dev"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/github-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/github-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/github-dark.svg"><img src="assets/github-light.svg" width="100%" alt="On GitHub: 11,532 contributions in the last year, a 58-day current streak, since 28 Sep, longest streak 58 days, 12,695 contributions since 2020, 21 public repos, 15 stars earned, 156 downloads of my releases."></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/github-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/github-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/github-dark.svg"><img src="assets/github-light.svg" width="100%" alt="On GitHub: 11,534 contributions in the last year, a 58-day current streak, since 28 Sep, longest streak 58 days, 12,697 contributions since 2020, 21 public repos, 15 stars earned, 156 downloads of my releases."></picture>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-3m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-3m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-3m-dark.svg"><img src="assets/graph-3m-light.svg" width="100%" alt="8,007 contributions in the last 3 months"></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-3m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-3m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-3m-dark.svg"><img src="assets/graph-3m-light.svg" width="100%" alt="8,009 contributions in the last 3 months"></picture>
 
-<details><summary>Last 12 months</summary>
+<details><summary>Last 12 months: 11,534 contributions</summary>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-12m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-12m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-12m-dark.svg"><img src="assets/graph-12m-light.svg" width="100%" alt="11,532 contributions in the last 12 months"></picture>
-
-</details>
-
-<details><summary>2026</summary>
-
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2026-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2026-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2026-dark.svg"><img src="assets/graph-2026-light.svg" width="100%" alt="11,417 contributions in 2026"></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-12m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-12m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-12m-dark.svg"><img src="assets/graph-12m-light.svg" width="100%" alt="11,534 contributions in the last 12 months"></picture>
 
 </details>
 
-<details><summary>2025</summary>
+<details><summary>2026: 11,419 contributions</summary>
+
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2026-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2026-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2026-dark.svg"><img src="assets/graph-2026-light.svg" width="100%" alt="11,419 contributions in 2026"></picture>
+
+</details>
+
+<details><summary>2025: 472 contributions</summary>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2025-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2025-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2025-dark.svg"><img src="assets/graph-2025-light.svg" width="100%" alt="472 contributions in 2025"></picture>
 
 </details>
 
-<details><summary>2024</summary>
+<details><summary>2024: 0 contributions</summary>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2024-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2024-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2024-dark.svg"><img src="assets/graph-2024-light.svg" width="100%" alt="0 contributions in 2024"></picture>
 
 </details>
 
-<details><summary>2023</summary>
+<details><summary>2023: 315 contributions</summary>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2023-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2023-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2023-dark.svg"><img src="assets/graph-2023-light.svg" width="100%" alt="315 contributions in 2023"></picture>
 
 </details>
 
-<details><summary>2022</summary>
+<details><summary>2022: 330 contributions</summary>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2022-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2022-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2022-dark.svg"><img src="assets/graph-2022-light.svg" width="100%" alt="330 contributions in 2022"></picture>
 
 </details>
 
-<details><summary>2021</summary>
+<details><summary>2021: 160 contributions</summary>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2021-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2021-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2021-dark.svg"><img src="assets/graph-2021-light.svg" width="100%" alt="160 contributions in 2021"></picture>
 
 </details>
 
-<details><summary>2020</summary>
+<details><summary>2020: 1 contribution</summary>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2020-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2020-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2020-dark.svg"><img src="assets/graph-2020-light.svg" width="100%" alt="1 contribution in 2020"></picture>
 
 </details>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/line-30d-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/line-30d-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/line-30d-dark.svg"><img src="assets/line-30d-light.svg" width="100%" alt="2,332 contributions in the last 30 days"></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/line-30d-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/line-30d-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/line-30d-dark.svg"><img src="assets/line-30d-light.svg" width="100%" alt="2,295 contributions in the last 30 days"></picture>
 
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/whoami-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/whoami-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/whoami-dark.svg"><img src="assets/whoami-light.svg" width="100%" alt="whoami: zaza, solo developer, Tbilisi, Georgia. I build apps, iPhone games and AI agent tools, and film it for YouTube. Now: Road to 10,000 followers on X, 3,216 after day 4 of 42. Programmer Simulator is in the works. FocusShell v2.1.0: many Claude Code agents, one window."></picture>
 
