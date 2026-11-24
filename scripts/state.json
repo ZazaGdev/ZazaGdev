@@ -8,9 +8,9 @@
  },
  "sources": {
   "repos": {
-   "public_repos": 20,
+   "public_repos": 21,
    "stars": 15,
-   "downloads": 155,
+   "downloads": 156,
    "repos": {
     "AI-fun": {
      "stars": 2,
@@ -49,7 +49,7 @@
     },
     "editbay": {
      "stars": 3,
-     "downloads": 29,
+     "downloads": 30,
      "tag": "v2.1",
      "description": "A free, local video editor: multi-track timeline, layers, sound and captions",
      "language": "TypeScript"
@@ -151,6 +151,13 @@
      "tag": null,
      "description": "Angular / Dexie based simple time-tracker for personal use. Ongoing...",
      "language": "TypeScript"
+    },
+    "ZazaGdev": {
+     "stars": 0,
+     "downloads": 0,
+     "tag": null,
+     "description": "Profile README",
+     "language": "HTML"
     }
    }
   },
