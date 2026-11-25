@@ -1,8 +1,8 @@
-# The contribution graphs, each its own image with its total on top: the last 3 months (13 weeks, roomy
-# cells with each day's count printed inside), the last 12 months and every calendar year since the account
+# The contribution graphs, each its own image with its total on top: the last 6 months (26 weeks, a count
+# printed in every cell), the last 12 months and every calendar year since the account
 # was made (each in a <details> in the README). Drawn like GitHub's graph (weeks as columns, Sunday on top)
 # in design-system colours. Every total is the sum of the cells drawn, never a number read from elsewhere.
-# Desktop is 880 wide. The phone variants are 440 wide: the 3-month graph turns on its side (a week per row,
+# Desktop is 880 wide. The phone variants are 440 wide: the 6-month graph turns on its side (a week per row,
 # seven big cells across) so every count is big enough to read; the 12-month and year graphs are cut into
 # four stacked rows of 14 columns (about three months each), with a count in every cell (10.5 to 12 in a
 # 440 box, about 8.5 to 10 px on a 390 px phone).
@@ -18,9 +18,9 @@ def sunday_of(d):
 
 
 def range_of(kind, today, first_day=None):
-    """(start, end, heading words) for "3m", "12m" or a year such as "2025"."""
-    if kind == "3m":
-        return sunday_of(today) - timedelta(weeks=12), today, "in the last 3 months"
+    """(start, end, heading words) for "6m", "12m" or a year such as "2025"."""
+    if kind == "6m":
+        return sunday_of(today) - timedelta(weeks=25), today, "in the last 6 months"
     if kind == "12m":
         return first_day, today, "in the last 12 months"
     y = int(kind)
@@ -91,7 +91,7 @@ class Dim:
         self.label, self.head, self.rows, self.num, self.side = label, head, rows, num, side
 
 
-DESKTOP_WIDE = Dim(880, 28, 824, 61, 41, 53, 35, 9, 17, 24, num=17)       # 13 columns, roomy
+DESKTOP_WIDE = Dim(880, 28, 824, 30.5, 32, 28, 28, 6, 16, 24, num=13)     # 26 columns, a count in every cell
 DESKTOP_YEAR = Dim(880, 32, 816, 29, 29, 26, 26, 5, 15, 22, rows=2, num=12)   # two half-year rows of 27 columns
 PHONE_WIDE = Dim(440, 26, 388, 44, 42, 40, 36, 8, 16, 30, num=19, side=True)
 PHONE_YEAR = Dim(440, 26, 388, 25.2, 25.2, 23, 23, 4, 15, 30, rows=4, num=12)   # four rows of 14 columns
@@ -304,10 +304,10 @@ def line_chart(t, data, today, phone=False):
 
 
 def graph_specs(data, today):
-    """[(key, summary or None, start, end, words)] in README order: 3 months, 12 months, then 2026 back to the first year."""
+    """[(key, summary or None, start, end, words)] in README order: 6 months, 12 months, then 2026 back to the first year."""
     c = data["contrib"]
     first = date.fromisoformat(c["grid"]["first"])
-    specs = [("3m", None), ("12m", "Last 12 months")]
+    specs = [("6m", None), ("12m", "Last 12 months")]
     specs += [(str(y), str(y)) for y in range(today.year, c["since_year"] - 1, -1)]
     out = []
     for key, summary in specs:
@@ -333,7 +333,7 @@ def make_graphs(t, data, today):
     svgs[f"line-30d-{t}.svg"] = line_chart(t, data, today)[0]
     svgs[f"line-30d-phone-{t}.svg"] = line_chart(t, data, today, phone=True)[0]
     for key, _, start, end, words in graph_specs(data, today):
-        wide = key == "3m"
+        wide = key == "6m"
         for suffix, dim in (("", DESKTOP_WIDE if wide else DESKTOP_YEAR), ("-phone", PHONE_WIDE if wide else PHONE_YEAR)):
             s, total, title = graph_image(t, dim, days, start, end, words, "per day" if suffix else "contributions per day")
             svgs[f"graph-{key}{suffix}-{t}.svg"] = s

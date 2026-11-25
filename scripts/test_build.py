@@ -427,8 +427,8 @@ class BuildTests(unittest.TestCase):
                 svg = files[f"assets/{name}-light.svg"]
                 self.assertIn(f"{total:,}", re.findall(r"<text [^>]*>([^<]*)</text>", svg)[0], name)
                 self.assertIn(f'aria-label="{graphs.title_of(total, words)}"', svg, name)
-                dim = (graphs.DESKTOP_WIDE if key == "3m" else graphs.DESKTOP_YEAR) if name == f"graph-{key}" else \
-                      (graphs.PHONE_WIDE if key == "3m" else graphs.PHONE_YEAR)
+                dim = (graphs.DESKTOP_WIDE if key == "6m" else graphs.DESKTOP_YEAR) if name == f"graph-{key}" else \
+                      (graphs.PHONE_WIDE if key == "6m" else graphs.PHONE_YEAR)
                 lit = len(re.findall(r'<rect x="[\d.]+" y="[\d.]+" width="%s" height="%s"' % (dim.cw, dim.ch), svg))
                 self.assertEqual(lit, len(cells), name)                 # one rect per day, no more, no less
                 printed = [(int(a)) for a in re.findall(r'data-count="(\d+)"', svg)]
@@ -511,12 +511,22 @@ class BuildTests(unittest.TestCase):
             unit = "contribution" if graph_total == 1 else "contributions"
             self.assertEqual(summary.split(": ", 1)[1], f"{graph_total:,} {unit}", key)
         self.assertEqual(text.count("<details>"), text.count("</details>"))
-        self.assertLess(text.index("graph-3m-light.svg"), text.index("<details>"))
-        self.assertEqual(len(re.findall(r"graph-3m-light\.svg", text)), 1)
+        self.assertLess(text.index("graph-6m-light.svg"), text.index("<details>"))
+        self.assertEqual(len(re.findall(r"graph-6m-light\.svg", text)), 1)
         outside = re.sub(r"<details>.*?</details>", "", text, flags=re.S)
-        self.assertIn("graph-3m-light.svg", outside)
+        self.assertIn("graph-6m-light.svg", outside)
         self.assertNotIn("graph-12m", outside)
         self.assertLess(len(text.encode("utf8")), 500 * 1024)
+
+    def test_6m_graph_starts_on_sunday_ends_today_and_spans_26_weeks(self):
+        today = date.fromisoformat(self.res["data"]["today"])
+        days = self.res["data"]["contrib"]["days"]
+        key, summary, start, end, words = graphs.graph_specs(self.res["data"], today)[0]
+        self.assertEqual((key, summary, words), ("6m", None, "in the last 6 months"))
+        self.assertEqual(start.weekday(), 6)
+        self.assertEqual(end, today)
+        cells = graphs.cells_of(days, start, end)
+        self.assertEqual(graphs.ncols_of(cells, start), 26)
 
     def test_github_board_has_seven_icons_and_no_graph(self):
         for name in ("github", "github-phone"):
