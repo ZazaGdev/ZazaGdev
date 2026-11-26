@@ -5,7 +5,8 @@ name: nightly profile refresh
 # GITHUB_TOKEN is only passed on to lift the REST rate limit.
 on:
   schedule:
-    - cron: "17 2 * * *"
+    # #3578: every 12 hours (02:17 and 14:17 UTC), off the top of the hour, as GitHub delays or drops busy-time runs
+    - cron: "17 2,14 * * *"
   workflow_dispatch:
   push:
     paths:
