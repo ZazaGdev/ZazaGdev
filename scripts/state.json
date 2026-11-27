@@ -10,7 +10,7 @@
   "repos": {
    "public_repos": 21,
    "stars": 24,
-   "downloads": 170,
+   "downloads": 172,
    "repos": {
     "AI-fun": {
      "stars": 2,
@@ -70,7 +70,7 @@
     },
     "FocusShell": {
      "stars": 8,
-     "downloads": 123,
+     "downloads": 125,
      "tag": "v2.1.0",
      "description": "One window for all your Claude Code projects. Free and open source. Demo: youtu.be/t_WVO-hzF2w",
      "language": "JavaScript"

@@ -7,19 +7,19 @@
 <a href="https://zazag.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-site-dark.svg"><img src="assets/badge-site-light.svg" height="44" alt="zazag.dev"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/github-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/github-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/github-dark.svg"><img src="assets/github-light.svg" width="100%" alt="On GitHub: 11,861 contributions in the last year, a 61-day current streak, since 28 Sep, longest streak 61 days, 13,024 contributions since 2020, 21 public repos, 24 stars earned, 170 downloads of my releases."></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/github-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/github-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/github-dark.svg"><img src="assets/github-light.svg" width="100%" alt="On GitHub: 11,919 contributions in the last year, a 61-day current streak, since 28 Sep, longest streak 61 days, 13,082 contributions since 2020, 21 public repos, 24 stars earned, 172 downloads of my releases."></picture>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-6m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-6m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-6m-dark.svg"><img src="assets/graph-6m-light.svg" width="100%" alt="10,607 contributions in the last 6 months"></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-6m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-6m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-6m-dark.svg"><img src="assets/graph-6m-light.svg" width="100%" alt="10,665 contributions in the last 6 months"></picture>
 
-<details><summary>Last 12 months: 11,861 contributions</summary>
+<details><summary>Last 12 months: 11,919 contributions</summary>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-12m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-12m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-12m-dark.svg"><img src="assets/graph-12m-light.svg" width="100%" alt="11,861 contributions in the last 12 months"></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-12m-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-12m-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-12m-dark.svg"><img src="assets/graph-12m-light.svg" width="100%" alt="11,919 contributions in the last 12 months"></picture>
 
 </details>
 
-<details><summary>2026: 11,746 contributions</summary>
+<details><summary>2026: 11,804 contributions</summary>
 
-<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2026-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2026-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2026-dark.svg"><img src="assets/graph-2026-light.svg" width="100%" alt="11,746 contributions in 2026"></picture>
+<picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/graph-2026-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/graph-2026-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/graph-2026-dark.svg"><img src="assets/graph-2026-light.svg" width="100%" alt="11,804 contributions in 2026"></picture>
 
 </details>
 
@@ -66,7 +66,7 @@
 <picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/label-ship-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/label-ship-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/label-ship-dark.svg"><img src="assets/label-ship-light.svg" width="100%" alt="What I ship"></picture>
 
 <p align="center">
-<a href="https://github.com/ZazaGdev/FocusShell"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-focusshell-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-focusshell-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-focusshell-dark.svg"><img src="assets/app-focusshell-light.svg" width="49%" alt="FocusShell: One window for all your Claude Code projects. Open source, v2.1.0, 123 downloads, 8 stars."></picture></a>
+<a href="https://github.com/ZazaGdev/FocusShell"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-focusshell-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-focusshell-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-focusshell-dark.svg"><img src="assets/app-focusshell-light.svg" width="49%" alt="FocusShell: One window for all your Claude Code projects. Open source, v2.1.0, 125 downloads, 8 stars."></picture></a>
 <a href="https://github.com/ZazaGdev/editbay"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-editbay-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-editbay-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-editbay-dark.svg"><img src="assets/app-editbay-light.svg" width="49%" alt="Editbay: A free, local video editor. Every ZazaG Dev video is cut in it. Open source, v2.1, 31 downloads, Win + Mac."></picture></a>
 <a href="https://zazag.dev/apps/programmer-simulator/"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-programmer-simulator-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-programmer-simulator-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-programmer-simulator-dark.svg"><img src="assets/app-programmer-simulator-light.svg" width="49%" alt="Programmer Simulator: An iPhone game about vibe coding your way out of the family garage. In the works, iPhone game, Unity."></picture></a>
 <a href="https://zazag.dev/apps/martva/"><picture><source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/app-martva-phone-dark.svg"><source media="(max-width: 600px)" srcset="assets/app-martva-phone-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/app-martva-dark.svg"><img src="assets/app-martva-light.svg" width="49%" alt="Martva: Georgian driving theory test: 1,572 questions, 5 languages, offline. Google play + app store, 650+ downloads, 5.0 from 5 ratings."></picture></a>
