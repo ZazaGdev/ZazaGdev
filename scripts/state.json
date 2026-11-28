@@ -1,16 +1,16 @@
 {
- "fetched": "2026-11-27",
+ "fetched": "2026-11-28",
  "good": {
-  "repos": "2026-11-27",
-  "videos": "2026-11-27",
-  "appstore": "2026-11-27",
-  "challenge": "2026-11-27"
+  "repos": "2026-11-28",
+  "videos": "2026-11-28",
+  "appstore": "2026-11-28",
+  "challenge": "2026-11-28"
  },
  "sources": {
   "repos": {
    "public_repos": 21,
    "stars": 24,
-   "downloads": 172,
+   "downloads": 174,
    "repos": {
     "AI-fun": {
      "stars": 2,
@@ -70,7 +70,7 @@
     },
     "FocusShell": {
      "stars": 8,
-     "downloads": 125,
+     "downloads": 127,
      "tag": "v2.1.0",
      "description": "One window for all your Claude Code projects. Free and open source. Demo: youtu.be/t_WVO-hzF2w",
      "language": "JavaScript"
@@ -197,8 +197,8 @@
     "pid": "x",
     "n": 10000
    },
-   "day": 7,
-   "count": 3545,
+   "day": 8,
+   "count": 3643,
    "count_is_start": false,
    "platform": {
     "name": "X",
